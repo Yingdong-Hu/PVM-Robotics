@@ -1,0 +1,8 @@
+defaults:
+  - params
+  - _self_
+
+task_name: kitchen_micro_open-v3
+
+
+

@@ -1,0 +1,6 @@
+defaults:
+  - params
+  - _self_
+
+task_name: kitchen_knob1_on-v3
+

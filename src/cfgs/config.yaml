@@ -1,0 +1,51 @@
+defaults:
+  - _self_
+  - agent: potil
+  - suite: metaworld
+  - override hydra/launcher: submitit_local
+
+# Root Dir
+root_dir: '/path/to/dir/PVM-Robotics'
+
+# replay buffer
+replay_buffer_size: 150000
+replay_buffer_num_workers: 2
+expert_replay_buffer_num_workers: 2
+nstep: 3
+batch_size: 256  # 128
+store_repr: true
+# misc
+seed: 2
+device: cuda
+save_video: true
+save_train_video: false
+use_tb: false
+use_wandb: false
+log_freq: 100
+
+# experiment
+obs_type: 'pixels' # pixels, features
+exp_prefix: 'VRF'
+exp_suffix: ${agent.embedding_name}
+experiment: ${exp_prefix}_${suite.name}_${task_name}_${exp_suffix}_seed_${seed}
+
+# expert dataset
+num_demos: 10
+expert_dataset: '${root_dir}/expert_demos/${suite.name}/${task_name}/expert_demos.pkl'
+
+# Train with BC loss
+bc_regularize: false
+bc_weight_type: 'qfilter' # linear, qfilter
+
+stage1_train_frames: 20000   # For ROT, stage1 is BC
+
+hydra:
+  run:
+    dir: ./exp_local/${now:%Y.%m.%d}/${now:%H%M%S}_${experiment}
+  sweep:
+    dir: ./exp_local/${now:%Y.%m.%d}/${now:%H%M%S}
+    subdir: ${hydra.job.num}
+  launcher:
+    tasks_per_node: 1
+    nodes: 1
+    submitit_folder: ./exp/${now:%Y.%m.%d}/${now:%H%M%S}_${experiment}/.slurm
