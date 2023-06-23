@@ -10,7 +10,6 @@ Yingdong Hu, Renhao Wang, Li Erran Li, and Yang Gao
 
 ### Dependency Setup
 
-
 - **Install the following libraries**
 ```
 sudo apt update
@@ -178,7 +177,6 @@ agent.embedding_name=mocov2-resnet50 \
 bc_regularize=true num_demos=1 \
 use_wandb=true seed=1 exp_prefix=VRF
 ```
-
 
 #### Robosuite
 ```
