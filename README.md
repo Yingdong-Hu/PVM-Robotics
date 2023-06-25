@@ -24,7 +24,7 @@ conda activate pvm
 - Install [PyTorch](https://pytorch.org/), torchvision and timm following official instructions. For example:
 
 ```
-conda install pytorch==1.12.1 torchvision==0.13.1 cudatoolkit=11.3 -c pytorch
+conda install pytorch==1.12.1 torchvision==0.13.1 cudatoolkit=11.6 -c pytorch -c conda-forge
 pip install timm==0.4.5
 ```
 
