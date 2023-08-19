@@ -8,6 +8,7 @@ import numpy as np
 import dm_env
 from dm_env import StepType, specs, TimeStep
 
+import mj_envs
 
 CAMERA = {
     'kitchen_knob1_on-v3': 'left_cap2',
