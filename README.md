@@ -48,7 +48,11 @@ pip install -e /path/to/dir/robosuite-offline_study
 
 - **Install Franka-Kitchen**
 
-Please follow the [instructions](https://github.com/facebookresearch/r3m/tree/76a7a9eeeca6f034c12a9ffad4425ea36f4a139a/evaluation) in the R3M repository.
+Please follow the [instructions](https://github.com/facebookresearch/r3m/tree/76a7a9eeeca6f034c12a9ffad4425ea36f4a139a/evaluation) in the R3M repository. Unilke R3M, we only randomize the pose of the robot arm between episodes but not the kitchen. So be be sure to add the line 
+```
+FIXED_ENTRY_POINT = RANDOM_ENTRY_POINT
+```
+here https://github.com/vikashplus/mj_envs/blob/stable/mj_envs/envs/relay_kitchen/__init__.py#L160. Note that we use `RANDOM_ENTRY_POINT` instead of `RANDOM_DESK_ENTRY_POINT`.
 
 ### Download Pre-Trained Vision Models
 
